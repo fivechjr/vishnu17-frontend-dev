@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "gaxios": "fivechjr/gaxios#master",
         "mobx": "^5.13.0",
         "mobx-react": "^6.1.1",
         "react": "^16.8.6",
@@ -38,5 +39,6 @@
         "babel-plugin-root-import": "^6.3.0",
         "customize-cra": "^0.4.1",
         "react-app-rewired": "^2.1.3"
-    }
+    },
+    "proxy": "https://api.vishnu17.com"
 }
