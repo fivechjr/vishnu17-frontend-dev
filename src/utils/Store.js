@@ -3,6 +3,7 @@ import { observable, computed, action } from 'mobx'
 class Timer {
     @observable start = Date.now()
     @observable current = Date.now()
+    @observable debug = 'DEBUG'
 
     @computed
     get elapsedTime() {
@@ -20,6 +21,7 @@ class Timer {
     @action
     test() {
         console.log('test!')
+        this.debug = 'TEST!'
     }
 }
 

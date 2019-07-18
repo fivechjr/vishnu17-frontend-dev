@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense, Fragment, lazy } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AuthedRoute from '@/components/AuthedRoute'
 import Store from '@/utils/Store'
-import Timer from '@/components/Timer'
 
-import * as authService from '@/services/AuthService'
+const Authed = lazy(() => import('@/pages/Authed'))
+const Test = lazy(() => import('@/pages/Test'))
 
 function App() {
     const timerStore = new Store()
-    useEffect(() => {
-        async function go() {
-            try {
-                await authService.me()
-            } catch (e) {
-                //
-            }
-        }
-        go()
-    })
     return (
-        <main>
-            <Timer store={timerStore} />
-        </main>
+        <Suspense fallback={<Fragment />}>
+            <Router>
+                <Route store={timerStore} path="/test" component={Test} />
+                <AuthedRoute store={timerStore} path="/authed" component={Authed} />
+            </Router>
+        </Suspense>
     )
 }
 

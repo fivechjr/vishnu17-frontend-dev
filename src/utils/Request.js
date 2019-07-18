@@ -1,6 +1,5 @@
 import * as gaxios from 'gaxios'
 import * as authService from '@/services/AuthService'
-import Store from '@/utils/Store'
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
@@ -30,7 +29,6 @@ gaxios.instance.defaults = {
                     err.config.headers['Authorization'] = useAuthorization()
                     resolve()
                 } catch (e) {
-                    new Store().test()
                     reject()
                     // window.location.replace('http://www.w3schools.com')
                 }
