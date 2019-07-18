@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import useStore from '@/hooks/useStore'
 import * as authService from '@/services/AuthService'
 
-const PrivateRoute = ({ component: Component, store, ...rest }) => {
+const AuthedRoute = ({ component: Component, store, ...rest }) => {
     const [isRequested, setRequested] = useState(false)
+    const { timerStore } = useStore()
+
     useEffect(() => {
         ;(async function() {
-            store.test()
             try {
+                timerStore.test()
                 await authService.me()
             } catch (e) {
                 //
@@ -15,7 +18,8 @@ const PrivateRoute = ({ component: Component, store, ...rest }) => {
                 setRequested(true)
             }
         })()
-    }, [store])
+    }, [store, timerStore])
+
     if (!isRequested) {
         return null
     } else {
@@ -23,4 +27,4 @@ const PrivateRoute = ({ component: Component, store, ...rest }) => {
     }
 }
 
-export default PrivateRoute
+export default AuthedRoute
