@@ -4674,7 +4674,7 @@ gauge@~2.7.3:
 
 gaxios@fivechjr/gaxios#master:
   version "0.0.0"
-  resolved "https://codeload.github.com/fivechjr/gaxios/tar.gz/ccb8909ee5cc1cde7dbd8cf6d28006e8dae25f55"
+  resolved "https://codeload.github.com/fivechjr/gaxios/tar.gz/d423f53be38bfe4816bb0fc200d9db18f435e702"
   dependencies:
     abort-controller "^3.0.0"
     extend "^3.0.2"

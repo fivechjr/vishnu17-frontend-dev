@@ -13,7 +13,13 @@ class Timer {
 
     @action
     tick() {
+        console.log('tick!')
         this.current = Date.now()
+    }
+
+    @action
+    test() {
+        console.log('test!')
     }
 }
 

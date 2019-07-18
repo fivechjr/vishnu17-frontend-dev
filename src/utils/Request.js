@@ -1,7 +1,12 @@
 import * as gaxios from 'gaxios'
+import * as authService from '@/services/AuthService'
+import Store from '@/utils/Store'
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
+
+const setAuthorization = z => window.localStorage.setItem('z', z)
 const useAuthorization = () => window.localStorage.getItem('z') || ''
+
 const composeURL = z => {
     return (
         (process.env.NODE_ENV === 'production'
@@ -20,12 +25,15 @@ gaxios.instance.defaults = {
         statusCodesToRetry: [[100, 199], [429, 429], [500, 599], [401, 401]],
         onRetryAttempt: err => {
             return new Promise(async (resolve, reject) => {
-                window.localStorage.setItem('z', Date.now())
-                err.config.headers['Authorization'] = useAuthorization()
-                console.log('going to sleep')
-                await sleep(3000)
-                console.log('wake up')
-                resolve()
+                try {
+                    await authService.refresh()
+                    err.config.headers['Authorization'] = useAuthorization()
+                    resolve()
+                } catch (e) {
+                    new Store().test()
+                    reject()
+                    // window.location.replace('http://www.w3schools.com')
+                }
             })
         }
     },
@@ -34,4 +42,4 @@ gaxios.instance.defaults = {
 
 const sendRequest = (options, callback) => gaxios.request(options, callback)
 
-export { composeURL, sendRequest }
+export { composeURL, sendRequest, setAuthorization }
