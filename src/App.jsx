@@ -1,9 +1,11 @@
 import React, { Suspense, Fragment, lazy } from 'react'
 import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import AuthedRoute from '@/components/AuthedRoute'
-import Store from '@/utils/Store'
 import Navigation from '@/components/Navigation'
+
+import Store from '@/stores'
 
 const Authed = lazy(() => import('@/pages/Authed'))
 const Test = lazy(() => import('@/pages/Test'))

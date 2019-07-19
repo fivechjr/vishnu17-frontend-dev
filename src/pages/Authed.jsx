@@ -1,12 +1,12 @@
 import React from 'react'
-import useStore from '@/hooks/useStore'
+import useProviderContext from '@/utils/use-provider-context'
 import { useObserver } from 'mobx-react-lite'
 
 const Authed = ({ store }) => {
-    const { timerStore } = useStore()
+    const { timer } = useProviderContext()
     return useObserver(() => (
-        <p onClick={() => timerStore.tick()}>
-            {timerStore.debug} - {timerStore.elapsedTime}
+        <p onClick={() => timer.tick()}>
+            {timer.debug} - {timer.elapsedTime}
             <span>Test!</span>
         </p>
     ))

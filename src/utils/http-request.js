@@ -1,5 +1,5 @@
 import * as gaxios from 'gaxios'
-import * as authService from '@/services/AuthService'
+import * as authService from '@/services/auth-service'
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 

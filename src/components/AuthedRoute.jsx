@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import useStore from '@/hooks/useStore'
-import * as authService from '@/services/AuthService'
+import useProviderContext from '@/utils/use-provider-context'
+import * as authService from '@/services/auth-service'
 
 const AuthedRoute = ({ component: Component, store, ...rest }) => {
     const [isRequested, setRequested] = useState(false)
-    const { timerStore } = useStore()
+    const { timer } = useProviderContext()
 
     useEffect(() => {
         ;(async function() {
             try {
-                timerStore.test()
+                timer.test()
                 await authService.me()
             } catch (e) {
                 //
@@ -18,7 +18,7 @@ const AuthedRoute = ({ component: Component, store, ...rest }) => {
                 setRequested(true)
             }
         })()
-    }, [store, timerStore])
+    }, [store, timer])
 
     if (!isRequested) {
         return null

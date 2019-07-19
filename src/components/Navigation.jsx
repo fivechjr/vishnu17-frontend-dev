@@ -1,10 +1,10 @@
 import React from 'react'
-import useStore from '@/hooks/useStore'
+import useProviderContext from '@/utils/use-provider-context'
 import { useObserver } from 'mobx-react-lite'
 
 const Navigation = ({ store }) => {
-    const { timerStore } = useStore()
-    return useObserver(() => <p onClick={() => timerStore.tick()}>{timerStore.elapsedTime}</p>)
+    const { timer } = useProviderContext()
+    return useObserver(() => <p onClick={() => timer.tick()}>{timer.elapsedTime}</p>)
 }
 
 export default Navigation

@@ -1,4 +1,4 @@
-import { composeURL, sendRequest, setAuthorization } from '@/utils/Request'
+import { composeURL, sendRequest, setAuthorization } from '@/utils/http-request'
 
 const signIn = credentials =>
     sendRequest({ url: composeURL('/auth/login'), method: 'POST', data: credentials })
