@@ -4,7 +4,11 @@
         <div class="flex flex-row justify-end mb-12">
             <Button size="small" @click.native="showAside = !showAside">Sorting</Button>
         </div>
-        <section v-if="participants && participants.length > 0">
+        <section
+            v-if="participants && participants.length > 0"
+            class="w-full overflow-x-scroll"
+            style="min-width: 768px"
+        >
             <ListHeader />
             <ListItem v-for="p in participants" :data="p" :key="p.id" />
             <div class="flex flex-row mb-12" />
