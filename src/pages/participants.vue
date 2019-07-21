@@ -19,7 +19,7 @@
                     :click-handler="handlePageChange"
                     :prev-text="'PREV'"
                     :next-text="'NEXT'"
-                    :break-view-text="'· · ·'"
+                    :break-view-text="'·'"
                     :container-class="'text-sm flex flex-row items-baseline text-gray-4'"
                     :page-class="'mx-4'"
                     :break-view-class="'mx-4'"
