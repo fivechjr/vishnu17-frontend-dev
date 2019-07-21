@@ -10,4 +10,5 @@
 
 * {
     outline: none !important;
+    -webkit-overflow-scrolling: touch;
 }
