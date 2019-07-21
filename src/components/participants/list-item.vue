@@ -1,5 +1,5 @@
 <template>
-    <div class="text-sm w-full flex flex-row items-center border-b">
+    <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
         <div class="w-2/6 flex flex-col px-4 py-3">
             <router-link
                 target="_blank"

@@ -3,11 +3,7 @@
         <div class="flex flex-row justify-end mb-12">
             <Button size="small" @click.native="$router.push({ name: 'Add Property' })">Add Property</Button>
         </div>
-        <section
-            v-if="properties && properties.length > 0"
-            class="w-full overflow-x-scroll"
-            style="min-width: 768px"
-        >
+        <section v-if="properties && properties.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
             <ListItem v-for="p in properties" :data="p" :key="p.id" />
             <div class="flex flex-row mb-12" />
