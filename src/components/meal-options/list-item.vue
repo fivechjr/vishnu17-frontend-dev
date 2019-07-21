@@ -1,0 +1,42 @@
+<template>
+    <div class="text-sm w-full flex flex-row items-center border-b">
+        <div class="w-2/6 flex flex-col px-4 py-3">
+            <router-link
+                target="_blank"
+                :to="{
+                name: 'Profile',
+                params: { id: data.id }
+            }"
+            >
+                <span
+                    class="text-sm text-black truncate"
+                >{{data.person.first_name}} {{data.person.last_name}}</span>
+            </router-link>
+        </div>
+        <div class="w-2/6 flex flex-col px-4 py-3">
+            <span class="text-sm text-black truncate">{{data.person.student_id}}</span>
+        </div>
+        <div class="w-1/6 flex flex-col px-4 py-3">
+            <span class="text-sm text-gray-3 truncate">{{when}}</span>
+        </div>
+        <div class="w-1/6 flex flex-col px-4 py-3">
+            <span class="text-xs text-gray-3 tracking-wide uppercase truncate">{{data.time}}</span>
+        </div>
+    </div>
+</template>
+
+<script>
+import dayjs from "dayjs";
+export default {
+    props: ["data"],
+    computed: {
+        when: function() {
+            if (this.data.when) {
+                return dayjs(this.data.when).format("YYYY-MM-DD");
+            } else {
+                return "N/A";
+            }
+        }
+    }
+};
+</script>

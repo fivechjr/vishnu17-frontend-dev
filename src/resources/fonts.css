@@ -1,0 +1,17 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@font-face {
+    font-family: 'Noto Sans Thai UI';
+    src: url('NotoSansThaiUI-Medium.woff2') format('woff2'),
+        url('NotoSansThaiUI-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans Thai UI';
+    src: url('NotoSansThaiUI-Regular.woff2') format('woff2'),
+        url('NotoSansThaiUI-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
