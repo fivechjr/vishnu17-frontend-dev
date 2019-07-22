@@ -2,7 +2,7 @@
     <Layout>
         <div class="w-full flex justify-center">
             <div class="w-full md:w-2/3">
-                <form ref="form" @submit.prevent="submit">
+                <form ref="form" @submit.prevent="submit" novalidate>
                     <Module>
                         <template slot="content">
                             <div class="px-8 py-6">
