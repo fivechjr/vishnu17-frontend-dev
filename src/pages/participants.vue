@@ -7,24 +7,24 @@
         <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
             <ListItem v-for="p in participants" :data="p" :key="p.id" />
-            <div class="flex flex-row mb-12" />
-            <div class="w-full flex justify-end">
-                <Paginate
-                    v-model="pagination.current"
-                    :page-count="pagination.total"
-                    :click-handler="handlePageChange"
-                    :prev-text="'PREV'"
-                    :next-text="'NEXT'"
-                    :break-view-text="'·'"
-                    :container-class="'text-sm flex flex-row items-baseline text-gray-4'"
-                    :page-class="'mx-4'"
-                    :break-view-class="'mx-4'"
-                    :prev-class="'text-xs tracking-wide mr-4'"
-                    :next-class="'text-xs tracking-wide ml-4'"
-                    :active-class="'text-black'"
-                ></Paginate>
-            </div>
         </section>
+        <div v-if="participants && participants.length > 0" class="flex flex-row mb-12" />
+        <div v-if="participants && participants.length > 0" class="w-full flex justify-end">
+            <Paginate
+                v-model="pagination.current"
+                :page-count="pagination.total"
+                :click-handler="handlePageChange"
+                :prev-text="'PREV'"
+                :next-text="'NEXT'"
+                :break-view-text="'·'"
+                :container-class="'text-sm flex flex-row items-baseline text-gray-4'"
+                :page-class="'mx-4'"
+                :break-view-class="'mx-4'"
+                :prev-class="'text-xs tracking-wide mr-4'"
+                :next-class="'text-xs tracking-wide ml-4'"
+                :active-class="'text-black'"
+            ></Paginate>
+        </div>
     </Layout>
 </template>
 
