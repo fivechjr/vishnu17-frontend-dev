@@ -67,9 +67,12 @@ export default {
             const form = new FormData(this.$refs.form);
             const when =
                 form.get("when") && form.get("when") !== ""
-                    ? new Date(form.get("when"))
+                    ? dayjs(new Date(form.get("when")).getTime()).format(
+                          "YYYY-MM-DD HH:mm:ss"
+                      )
                     : "";
             form.set("when", when);
+            console.log("when", when);
             try {
                 await propertyService.addProperty(form);
                 alert("Added.");
