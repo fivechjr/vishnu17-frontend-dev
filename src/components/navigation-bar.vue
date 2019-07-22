@@ -1,7 +1,7 @@
 <template>
     <header
         v-if="$store.state.currentUser.isAuthenticated"
-        class="bg-white sticky top-0 bg-gray-1 z-20 flex items-center"
+        class="bg-white sticky top-0 bg-gray-1 z-20 flex items-center shadow-xl"
     >
         <div class="container">
             <div class="w-full flex justify-center">
