@@ -10,12 +10,14 @@
         <div class="flex flex-row justify-end mb-12">
             <Button size="small" @click.native="showAside = !showAside">Filtering & Sorting</Button>
         </div>
-        <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
+        <p class="text-xs uppercase tracking-wide text-blue-2">{{pagination.records}} RECORDS</p>
+        <div class="flex flex-row mb-12" />
+        <section v-if="meals && meals.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
-            <ListItem v-for="p in participants" :data="p" :key="p.id" />
+            <ListItem v-for="p in meals" :data="p" :key="p.id" />
         </section>
-        <div v-if="participants && participants.length > 0" class="flex flex-row mb-12" />
-        <div v-if="participants && participants.length > 0" class="w-full flex justify-end">
+        <div v-if="meals && meals.length > 0" class="flex flex-row mb-12" />
+        <div v-if="meals && meals.length > 0" class="w-full flex justify-end">
             <Paginate
                 v-model="pagination.current"
                 :page-count="pagination.total"
@@ -59,10 +61,11 @@ export default {
     },
     data: function() {
         return {
-            participants: [],
+            meals: [],
             pagination: {
                 current: 0,
-                total: 0
+                total: 0,
+                records: 0
             },
             sorting: {},
             filters: {
@@ -89,10 +92,11 @@ export default {
                     this.parameters.extra
                 );
                 const data = all.data.data;
-                this.participants = data;
+                this.meals = data;
                 this.pagination = {
                     current: all.data.current_page,
-                    total: all.data.last_page
+                    total: all.data.last_page,
+                    records: all.data.total
                 };
             } catch (e) {
                 if (useAlert) {

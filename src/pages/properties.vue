@@ -24,6 +24,7 @@
                 :active-class="'text-black'"
             ></Paginate>
         </div>
+        <NotFound v-else />
     </Layout>
 </template>
 
@@ -37,6 +38,7 @@ import ListItem from "@/components/properties/list-item";
 import Button from "@/components/button";
 import * as propertyService from "@/services/property-service";
 import Paginate from "vuejs-paginate";
+import NotFound from "@/components/not-found";
 export default {
     components: {
         Layout,
@@ -45,7 +47,8 @@ export default {
         ListHeader,
         ListItem,
         Button,
-        Paginate
+        Paginate,
+        NotFound
     },
     data: function() {
         return {

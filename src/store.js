@@ -10,6 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         currentUser: {
+            id: '',
             name: '',
             username: '',
             isAuthenticated: false
@@ -43,7 +44,11 @@ export default new Vuex.Store({
     },
     mutations: {
         setCurrentUser(state, payload) {
-            state.currentUser.name = payload.name
+            state.currentUser.id = payload.person_id
+            state.currentUser.name =
+                `${payload.person?.first_name} ${payload.person?.last_name} (${
+                    payload.person?.nickname
+                })` || 'N/A'
             state.currentUser.username = payload.username
             state.currentUser.isAuthenticated = true
         },

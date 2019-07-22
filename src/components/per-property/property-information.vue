@@ -7,7 +7,8 @@
                 <DataField label="NAME" :value="data.name" />
                 <DataField label="DESCRIPTION" :value="data.description" />
                 <DataField label="WHEN" :value="when" />
-                <DataField label="LOCATION" :value="data.location" :last="true" />
+                <DataField label="LOCATION" :value="data.location" />
+                <DataField label="IMAGE" :image="data.image" :last="true" />
             </div>
         </template>
         <template slot="footer">

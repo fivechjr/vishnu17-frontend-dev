@@ -9,11 +9,17 @@
             :class="{ 'mb-2': showFullText || isEditing }"
         >{{label}}</p>
         <span
-            v-if="!showFullText && !isEditing"
+            v-if="!showFullText && !isEditing && !image"
             class="truncate"
             @click="showContent($event.target)"
         >{{displayValue}}</span>
-        <span v-if="showFullText && !isEditing">{{displayValue}}</span>
+        <span v-if="showFullText && !isEditing && !image">{{displayValue}}</span>
+        <a
+            v-if="image"
+            :href="`https://api.vishnu17.com${image}`"
+            target="_blank"
+            class="text-blue-2"
+        >View Image</a>
         <InputField v-if="isEditing" v-model="localValue" :placeholder="label" />
     </div>
 </template>
@@ -21,7 +27,7 @@
 <script>
 import InputField from "@/components/input-field";
 export default {
-    props: ["label", "value", "last", "isEditing"],
+    props: ["label", "value", "last", "isEditing", "image"],
     components: {
         InputField
     },

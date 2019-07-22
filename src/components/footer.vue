@@ -4,7 +4,15 @@
             <div class="w-full flex justify-center">
                 <div class="w-full flex flex-col px-8">
                     <div class="w-full flex flex-col items-center">
-                        <p class="w-full text-sm text-center">{{$store.state.currentUser.name}}</p>
+                        <a
+                            class="text-sm text-center cursor-pointer"
+                            @click="$router.push({
+                            name: 'Profile',
+                            params: { id: $store.state.currentUser.id }
+                        })"
+                        >
+                            <span>{{$store.state.currentUser.name}}</span>
+                        </a>
                         <Spacer />
                         <span
                             class="text-xs uppercase text-red-500 font-medium cursor-pointer"

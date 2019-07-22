@@ -2,7 +2,14 @@
     <Layout>
         <Aside v-show="showAside" @apply="applySorting" @close="showAside = false" />
         <div class="flex flex-row justify-end mb-12">
-            <Button size="small" @click.native="showAside = !showAside">Sorting</Button>
+            <Button size="small">Quick Actions</Button>
+            <div class="ml-8">
+                <Button
+                    size="small"
+                    variant="secondary"
+                    @click.native="showAside = !showAside"
+                >Sorting</Button>
+            </div>
         </div>
         <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
@@ -25,6 +32,7 @@
                 :active-class="'text-black'"
             ></Paginate>
         </div>
+        <NotFound v-else />
     </Layout>
 </template>
 
@@ -38,6 +46,7 @@ import ListItem from "@/components/participants/list-item";
 import Button from "@/components/button";
 import * as participantService from "@/services/participant-service";
 import Paginate from "vuejs-paginate";
+import NotFound from "@/components/not-found";
 export default {
     components: {
         Layout,
@@ -46,7 +55,8 @@ export default {
         ListHeader,
         ListItem,
         Button,
-        Paginate
+        Paginate,
+        NotFound
     },
     data: function() {
         return {
