@@ -13,6 +13,7 @@
                 <ChangeStatus :id="property.id" @refresh="refresh" />
             </div>
         </div>
+        <NotFound v-else />
     </Layout>
 </template>
 
@@ -22,13 +23,15 @@ import PropertyInformation from "@/components/per-property/property-information"
 import Statuses from "@/components/per-property/statuses";
 import ChangeStatus from "@/components/per-property/change-status";
 import * as propertyService from "@/services/property-service";
+import NotFound from "@/components/not-found";
 
 export default {
     components: {
         Layout,
         PropertyInformation,
         ChangeStatus,
-        Statuses
+        Statuses,
+        NotFound
     },
     async mounted() {
         await this.getPropertyInfo();

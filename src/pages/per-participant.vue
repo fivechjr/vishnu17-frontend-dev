@@ -19,6 +19,7 @@
                 <Bags :id="participant.id" :data="bags" />
             </div>
         </div>
+        <NotFound v-else />
     </Layout>
 </template>
 
@@ -31,6 +32,7 @@ import HealthProfile from "@/components/per-participant/health-profile";
 import Bags from "@/components/per-participant/bags";
 import Meals from "@/components/per-participant/meals";
 import * as participantService from "@/services/participant-service";
+import NotFound from "@/components/not-found";
 
 export default {
     components: {
@@ -40,7 +42,8 @@ export default {
         Statuses,
         HealthProfile,
         Bags,
-        Meals
+        Meals,
+        NotFound
     },
     async mounted() {
         await this.getParticipantInfo();

@@ -2,14 +2,7 @@
     <Layout>
         <Aside v-show="showAside" @apply="applySorting" @close="showAside = false" />
         <div class="flex flex-row justify-end mb-12">
-            <Button size="small">Quick Actions</Button>
-            <div class="ml-8">
-                <Button
-                    size="small"
-                    variant="secondary"
-                    @click.native="showAside = !showAside"
-                >Sorting</Button>
-            </div>
+            <Button size="small" variant="secondary" @click.native="showAside = !showAside">Sorting</Button>
         </div>
         <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
