@@ -8,7 +8,7 @@
                             <div class="px-8 py-6">
                                 <p class="text-xl font-medium">Add Meal</p>
                                 <Spacer />
-                                <InputField label="WHEN" type="datetime-local" v-model="form.when" />
+                                <InputField label="WHEN" type="date" v-model="form.when" />
                                 <Spacer />
                                 <InputField label="NOTE" type="text" v-model="form.note" />
                                 <Spacer />
