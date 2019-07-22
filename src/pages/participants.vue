@@ -17,7 +17,7 @@
                 :prev-text="'PREV'"
                 :next-text="'NEXT'"
                 :break-view-text="'·'"
-                :container-class="'text-sm flex flex-row items-baseline text-gray-4'"
+                :container-class="'text-sm flex flex-row items-baseline text-gray-4 select-none'"
                 :page-class="'mx-4'"
                 :break-view-class="'mx-4'"
                 :prev-class="'text-xs tracking-wide mr-4'"
