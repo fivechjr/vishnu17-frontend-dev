@@ -23,7 +23,7 @@
             <span
                 v-else
                 class="text-sm text-gray-3"
-            >{{participantData.statuses[0].present ? 'Present' : 'Absent'}}</span>
+            >{{participantData.statuses[participantData.statuses.length - 1].present ? 'Present' : 'Absent'}}</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span
@@ -99,16 +99,16 @@ export default {
             if (this.participantData.health_profile) {
                 const h = this.participantData.health_profile;
                 if (
-                    h.food_allergy === null &&
-                    h.general_allergy === null &&
-                    h.medical_history === null &&
-                    h.medication === null &&
-                    h.medication_allergy === null
+                    h.food_allergy ||
+                    h.general_allergy ||
+                    h.medical_history ||
+                    h.medication ||
+                    h.medication_allergy
                 ) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         },
         isMarked: function() {
             return this.participantData.statuses.length > 0;

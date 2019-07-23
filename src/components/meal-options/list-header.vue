@@ -7,7 +7,7 @@
             <span class="text-xs text-gray-5 tracking-wide">RECIPIENT NAME</span>
         </div>
         <div class="w-2/6 px-4 py-3">
-            <span class="text-xs text-gray-5 tracking-wide">STUDENT ID</span>
+            <span class="text-xs text-gray-5 tracking-wide">FOOD ALLERGY</span>
         </div>
         <div class="w-1/6 px-4 py-3">
             <span class="text-xs text-gray-5 tracking-wide">DATE</span>

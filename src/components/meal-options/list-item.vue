@@ -1,20 +1,21 @@
 <template>
-    <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
+    <div class="text-sm w-full flex flex-row items-baseline border-b" style="min-width: 768px">
         <div class="w-2/6 flex flex-col px-4 py-3">
             <router-link
                 target="_blank"
                 :to="{
                 name: 'Profile',
-                params: { id: data.id }
+                params: { id: data.person_id }
             }"
             >
                 <span
                     class="text-sm text-black truncate"
                 >{{data.person.first_name}} {{data.person.last_name}}</span>
             </router-link>
+            <span class="text-sm text-gray-3 truncate">{{data.person.student_id}}</span>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
-            <span class="text-sm text-black truncate">{{data.person.student_id}}</span>
+            <span class="text-sm text-black">{{data.person.health_profile.food_allergy || 'N/A'}}</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span class="text-sm text-gray-3 truncate">{{when}}</span>
