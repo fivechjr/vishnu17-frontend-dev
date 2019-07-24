@@ -12,6 +12,7 @@
     "core-js": "^2.6.5",
     "dayjs": "^1.8.15",
     "lodash": "^4.17.15",
+    "nprogress": "^0.2.0",
     "tailwindcss": "^1.0.5",
     "vee-validate": "^2.2.13",
     "vue": "^2.6.10",

@@ -1,13 +1,14 @@
 <template>
     <header
         v-if="$store.state.currentUser.isAuthenticated"
-        class="bg-gray-7 sticky top-0 z-20 flex items-center shadow-xl"
+        class="bg-white sticky top-0 z-20 flex items-center"
+        style="box-shadow: 0 25px 50px -12px rgba(0,0,0,.075)"
     >
         <div class="container">
             <div class="w-full flex justify-center">
                 <div
                     class="w-full flex flex-row items-center px-8 overflow-x-auto"
-                    style="height: 60px"
+                    style="height: 70px"
                 >
                     <div class="flex items-center" style="min-width: calc(556.48px + 2rem)">
                         <a
@@ -60,7 +61,7 @@ export default {
 
 <style>
 .router-link-exact-active {
-    @apply text-white;
+    color: #000;
     @apply font-medium;
 }
 </style>

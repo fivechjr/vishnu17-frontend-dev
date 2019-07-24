@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
-import * as authService from '@/services/auth-service'
+import NProgress from 'nprogress'
 
 Vue.use(Router)
 
@@ -116,6 +116,10 @@ const router = new Router({
 })
 
 router.beforeEach(async (to, from, next) => {
+    if (to.name) {
+        NProgress.start()
+    }
+
     if (to.meta.redirectIfAuthenticated && !to.params.skip) {
         try {
             if (store.getters.isAuthenticated) {
@@ -156,6 +160,10 @@ router.beforeEach(async (to, from, next) => {
     } else {
         next()
     }
+})
+
+router.afterEach((to, from) => {
+    NProgress.done()
 })
 
 export default router

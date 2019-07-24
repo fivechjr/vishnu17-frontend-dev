@@ -1,5 +1,6 @@
 import * as axios from 'axios'
 import * as authService from '@/services/auth-service'
+import NProgress from 'nprogress'
 
 const localStorageKey = 'vishnu17:refresh-token'
 const getAuthorizationToken = () => window.localStorage.getItem(localStorageKey || '')
@@ -29,6 +30,7 @@ const httpRequest = axios.create()
 
 httpRequest.interceptors.request.use(
     config => {
+        // NProgress.start()
         config.headers['Authorization'] = useAuthorization()
         return config
     },
@@ -39,9 +41,11 @@ httpRequest.interceptors.request.use(
 
 httpRequest.interceptors.response.use(
     function(response) {
+        // NProgress.done()
         return response
     },
     function(error) {
+        // NProgress.done()
         if (error.response) {
             const {
                 config,

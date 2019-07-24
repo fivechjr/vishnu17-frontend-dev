@@ -1,4 +1,6 @@
+import axios from 'axios'
 import Vue from 'vue'
+import '../node_modules/nprogress/nprogress.css'
 import '@/resources/tailwind.css'
 import App from '@/App.vue'
 import router from '@/router'
