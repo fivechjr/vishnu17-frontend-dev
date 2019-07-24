@@ -27,12 +27,12 @@
     left: 0;
 
     width: 100%;
-    height: 2px;
+    height: 1px;
 }
 
 /* Fancy blur effect */
 #nprogress .peg {
-    display: block;
+    display: none;
     position: absolute;
     right: 0px;
     width: 100px;
