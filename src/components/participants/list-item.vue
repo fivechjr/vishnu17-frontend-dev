@@ -22,8 +22,9 @@
             </div>
             <span
                 v-else
-                class="text-sm text-gray-3"
-            >{{participantData.statuses[participantData.statuses.length - 1].present ? 'Present' : 'Absent'}}</span>
+                class="text-xs uppercase tracking-wide"
+                :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
+            >{{isPresent ? 'Present' : 'Absent'}}</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span
@@ -115,6 +116,15 @@ export default {
         },
         isMarked: function() {
             return this.participantData.statuses.length > 0;
+        },
+        isPresent: function() {
+            if (this.participantData.statuses.length > 0) {
+                return this.participantData.statuses[
+                    this.participantData.statuses.length - 1
+                ].present;
+            } else {
+                return false;
+            }
         }
     }
 };

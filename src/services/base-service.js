@@ -7,4 +7,11 @@ const getHouses = () => {
     })
 }
 
-export { getHouses }
+const getDivisions = () => {
+    return httpRequest({
+        url: composeRequest('/divisions'),
+        method: 'GET'
+    })
+}
+
+export { getHouses, getDivisions }

@@ -42,7 +42,8 @@ export default new Vuex.Store({
                 { name: 'ชั้นปีที่ 4', value: '4' },
                 { name: 'นายช่าง', value: '9' }
             ],
-            genders: [{ name: 'ชาย', value: '1' }, { name: 'หญิง', value: '2' }]
+            genders: [{ name: 'ชาย', value: '1' }, { name: 'หญิง', value: '2' }],
+            divisions: []
         }
     },
     mutations: {
@@ -66,6 +67,9 @@ export default new Vuex.Store({
         },
         setHouses(state, payload) {
             state.options.houses = payload
+        },
+        setDivisions(state, payload) {
+            state.options.divisions = payload
         }
     },
     actions: {
@@ -88,11 +92,22 @@ export default new Vuex.Store({
                     state.options.propertyActions.length === 0 ||
                     state.options.houses.length === 0
                 ) {
+                    // prettier-ignore
                     const propertyActions = propertyService
                         .getActions()
                         .then(d => commit('setPropertyActions', d.data))
-                    const houses = baseService.getHouses().then(d => commit('setHouses', d.data))
-                    await Promise.all([propertyActions, houses])
+
+                    // prettier-ignore
+                    const houses = baseService
+                        .getHouses()
+                        .then(d => commit('setHouses', d.data))
+
+                    // prettier-ignore
+                    const divisions = baseService
+                        .getDivisions()
+                        .then(d => commit('setDivisions', d.data))
+
+                    await Promise.all([propertyActions, houses, divisions])
                 } else {
                     return Promise.resolve()
                 }
@@ -128,6 +143,12 @@ export default new Vuex.Store({
                         value: id
                     }))
                     return houses
+                case 'divisions':
+                    const divisions = state.options.divisions.map(({ name }) => ({
+                        name: name,
+                        value: id
+                    }))
+                    return divisions
                 case 'statuses':
                     return state.options.statuses.present
                 case 'sorting-directions':
