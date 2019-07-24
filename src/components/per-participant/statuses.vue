@@ -22,7 +22,10 @@
                     <p>
                         <strong class="font-medium">{{data ? data.length : '0'}}</strong> Statuses
                     </p>
-                    <div class="flex ml-8 flex-shrink-0">
+                    <div
+                        v-if="$store.getters.hasPermission('people.statuses.create')"
+                        class="flex ml-8 flex-shrink-0"
+                    >
                         <Button
                             size="small"
                             @click.native="$router.push({

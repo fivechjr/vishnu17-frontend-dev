@@ -31,9 +31,10 @@
         <template slot="footer">
             <Footer
                 v-model="isEditing"
-                :lastUpdated="data.updated_at"
+                :last-updated="data.updated_at"
                 @cancel="revert"
                 @save="update"
+                :edit-permission="$store.getters.hasPermission('people.health_profile.update')"
             />
         </template>
     </Module>

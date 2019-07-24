@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as _ from 'lodash'
 import * as authService from '@/services/auth-service'
 import * as baseService from '@/services/base-service'
 import * as propertyService from '@/services/property-service'
@@ -13,6 +14,7 @@ export default new Vuex.Store({
             id: '',
             name: '',
             username: '',
+            permissions: [],
             isAuthenticated: false
         },
         options: {
@@ -51,6 +53,7 @@ export default new Vuex.Store({
                     payload.person?.nickname
                 })` || 'N/A'
             state.currentUser.username = payload.username
+            state.currentUser.permissions = payload.all_permissions
             state.currentUser.isAuthenticated = true
         },
         clearCurrentUser(state) {
@@ -99,6 +102,12 @@ export default new Vuex.Store({
         }
     },
     getters: {
+        hasPermission: state => permission => {
+            const find = _.find(state.currentUser.permissions, { name: permission })
+            console.log(find)
+            if (find) return true
+            return false
+        },
         getOptions: state => action => {
             switch (action) {
                 default:
