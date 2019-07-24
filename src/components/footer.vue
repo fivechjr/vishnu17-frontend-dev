@@ -40,12 +40,13 @@ export default {
                 //
             } finally {
                 this.$store.dispatch("clearCurrentUser");
-                this.$router.replace({
-                    name: "Sign In",
-                    params: {
-                        skip: true
-                    }
-                });
+                // this.$router.replace({
+                //     name: "Sign In",
+                //     params: {
+                //         skip: true
+                //     }
+                // });
+                window.location.replace("/");
             }
         }
     }
