@@ -118,7 +118,7 @@ const router = new Router({
 router.beforeEach(async (to, from, next) => {
     if (to.meta.redirectIfAuthenticated && !to.params.skip) {
         try {
-            if (store.state.currentUser.isAuthenticated) {
+            if (store.getters.isAuthenticated) {
                 await store.dispatch('prepareResources')
                 return next({
                     name: 'All Participants'
@@ -137,7 +137,7 @@ router.beforeEach(async (to, from, next) => {
 
     if (to.meta.requiresAuthenticated) {
         try {
-            if (store.state.currentUser.isAuthenticated) {
+            if (store.getters.isAuthenticated) {
                 await store.dispatch('prepareResources')
                 next()
             } else {

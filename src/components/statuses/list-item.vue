@@ -14,7 +14,7 @@
             </router-link>
             <span
                 class="text-sm text-gray-3 truncate"
-            >{{data.person.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{data.person.year}}</span>
+            >{{data.person.student_id}} &mdash; ชั้นปีที่ {{data.person.year}}</span>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
             <span

@@ -39,7 +39,7 @@ export default {
             } catch (e) {
                 //
             } finally {
-                this.$store.dispatch("clearCurrentUser");
+                this.$store.dispatch("signOut");
                 // this.$router.replace({
                 //     name: "Sign In",
                 //     params: {

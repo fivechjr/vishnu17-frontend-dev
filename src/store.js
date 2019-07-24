@@ -4,7 +4,7 @@ import * as _ from 'lodash'
 import * as authService from '@/services/auth-service'
 import * as baseService from '@/services/base-service'
 import * as propertyService from '@/services/property-service'
-import { setAuthorization } from '@/utils/http-request'
+import { setAuthorization, getAuthorizationToken } from '@/utils/http-request'
 
 Vue.use(Vuex)
 
@@ -82,8 +82,10 @@ export default new Vuex.Store({
                 return Promise.reject(e)
             }
         },
-        clearCurrentUser({ commit }) {
+        signOut() {
             setAuthorization('')
+        },
+        clearCurrentUser({ commit }) {
             commit('clearCurrentUser')
         },
         async prepareResources({ commit, state }) {
@@ -117,6 +119,9 @@ export default new Vuex.Store({
         }
     },
     getters: {
+        isAuthenticated: state => {
+            return !!(state.currentUser.isAuthenticated && getAuthorizationToken())
+        },
         hasPermission: state => permission => {
             const find = _.find(state.currentUser.permissions, { name: permission })
             if (find) return true

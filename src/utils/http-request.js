@@ -2,8 +2,9 @@ import * as axios from 'axios'
 import * as authService from '@/services/auth-service'
 
 const localStorageKey = 'vishnu17:refresh-token'
+const getAuthorizationToken = () => window.localStorage.getItem(localStorageKey || '')
 const setAuthorization = token => window.localStorage.setItem(localStorageKey, token)
-const useAuthorization = () => 'Bearer ' + window.localStorage.getItem(localStorageKey || '')
+const useAuthorization = () => 'Bearer ' + getAuthorizationToken()
 
 let isAlreadyFetchingAccessToken = false
 let subscribers = []
@@ -82,4 +83,4 @@ httpRequest.interceptors.response.use(
     }
 )
 
-export { setAuthorization, useAuthorization, httpRequest, composeRequest }
+export { setAuthorization, useAuthorization, httpRequest, composeRequest, getAuthorizationToken }

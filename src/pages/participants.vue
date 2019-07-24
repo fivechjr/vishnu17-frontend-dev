@@ -81,7 +81,6 @@ export default {
     },
     methods: {
         fetchParticipants: async function(p = {}) {
-            console.log("params", p);
             const query = this.createQuery(p);
             const all = await participantService.getAll(query);
             const data = all.data.data;
