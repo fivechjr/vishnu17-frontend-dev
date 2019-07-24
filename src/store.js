@@ -124,7 +124,7 @@ export default new Vuex.Store({
             return !!(state.currentUser.isAuthenticated && getAuthorizationToken())
         },
         hasPermission: state => ({ key = null, name }) => {
-            if (key === state.currentUser.primaryKey || key === state.currentUser.id) {
+            if (key == state.currentUser.username || key == state.currentUser.id) {
                 return true
             }
 
