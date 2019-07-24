@@ -26,7 +26,7 @@
                 :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
             >{{isPresent ? 'Present' : 'Absent'}}</span>
             <span
-                v-if="!isStatusDefined"
+                v-if="!isStatusDefined && !isMarked"
                 class="text-xs uppercase tracking-wide text-gray-4"
             >NOT APPLICABLE</span>
         </div>
