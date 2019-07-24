@@ -6,14 +6,11 @@
         <div class="w-2/6 px-4 py-3">
             <span class="text-xs text-gray-5 tracking-wide">NAME</span>
         </div>
-        <div class="w-1/6 px-4 py-3">
-            <span class="text-xs text-gray-5 tracking-wide">LOCATION</span>
+        <div class="w-2/6 px-4 py-3">
+            <span class="text-xs text-gray-5 tracking-wide">LATEST STATUS</span>
         </div>
         <div class="w-2/6 px-4 py-3">
-            <span class="text-xs text-gray-5 tracking-wide">WHEN</span>
-        </div>
-        <div class="w-1/6 px-4 py-3">
-            <span class="text-xs text-gray-5 tracking-wide">STATUS</span>
+            <span class="text-xs text-gray-5 tracking-wide">LAST UPDATED</span>
         </div>
     </div>
 </template>

@@ -84,8 +84,8 @@ export default {
                     query,
                     this.filters.extra
                 );
-                const data = all.data.data;
-                this.properties = data;
+                const data = this.filters.method ? all.data : all.data.data;
+                this.statuses = data;
                 this.pagination = {
                     current: all.data.current_page,
                     total: all.data.last_page,

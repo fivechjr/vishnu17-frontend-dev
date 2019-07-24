@@ -1,36 +1,59 @@
 <template>
-    <div class="text-sm w-full flex flex-row items-baseline border-b" style="min-width: 768px">
+    <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
         <div class="w-2/6 flex flex-col px-4 py-3">
             <router-link
                 target="_blank"
                 :to="{
-                name: 'Property',
-                params: { id: data.id }
+                name: 'Profile',
+                params: { id: data.person_id }
             }"
             >
-                <span class="text-sm text-black truncate">{{data.name}}</span>
+                <span
+                    class="text-sm text-black truncate"
+                >{{data.person.first_name}} {{data.person.last_name}}</span>
             </router-link>
-        </div>
-        <div class="w-1/6 flex flex-col px-4 py-3">
-            <span class="text-sm text-gray-3 truncate">{{data.location}}</span>
+            <span
+                class="text-sm text-gray-3 truncate"
+            >{{data.person.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{data.person.year}}</span>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
-            <span class="text-sm text-gray-3 truncate">{{data.when}}</span>
+            <span
+                class="text-xs uppercase tracking-wide"
+                :class="isPresent ? 'text-teal-500' : (isUnexpected ? 'text-red-500': 'text-gray-4')"
+            >{{latestStatus}}</span>
         </div>
-        <div class="w-1/6 flex flex-col px-4 py-3 truncate">{{latestStatus}}</div>
+        <div class="w-2/6 flex flex-col px-4 py-3">
+            <span class="text-xs uppercase tracking-wide text-gray-4">{{data.updated_at}}</span>
+        </div>
     </div>
 </template>
 
 <script>
+import Button from "@/components/button";
+import * as participantService from "@/services/participant-service";
 export default {
     props: ["data"],
+    components: {
+        Button
+    },
+    mounted() {},
     computed: {
         latestStatus: function() {
-            if (this.data.actions && this.data.actions.length > 0) {
-                return this.data.actions[0]?.name;
-            } else {
-                return "N/A";
+            if (this.data.unexpected) {
+                return "Unexpected";
             }
+
+            if (this.data.present) {
+                return "Present";
+            } else {
+                return "Absent";
+            }
+        },
+        isPresent: function() {
+            return this.data.present;
+        },
+        isUnexpected: function() {
+            return this.data.unexpected;
         }
     }
 };
