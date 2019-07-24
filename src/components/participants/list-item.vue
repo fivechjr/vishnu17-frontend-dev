@@ -25,7 +25,7 @@
                 class="text-xs uppercase tracking-wide"
                 :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
             >{{isPresent ? 'Present' : 'Absent'}}</span>
-            <span class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
+            <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span
