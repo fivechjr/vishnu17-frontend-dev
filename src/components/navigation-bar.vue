@@ -6,7 +6,7 @@
         <div class="container">
             <div class="w-full flex justify-center">
                 <div
-                    class="w-full flex flex-row items-center px-8 overflow-x-scroll"
+                    class="w-full flex flex-row items-center px-8 overflow-x-auto"
                     style="height: 60px"
                 >
                     <div class="flex items-center" style="min-width: calc(556.48px + 2rem)">
