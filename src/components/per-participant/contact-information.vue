@@ -28,7 +28,7 @@
                 :last-updated="data.updated_at || data.created_at"
                 @save="update"
                 @cancel="revert"
-                :edit-permission="$store.getters.hasPermission('people.contact.update')"
+                :edit-permission="$store.getters.hasPermission({ key: $route.params.id, name: 'people.contact.update' })"
             />
         </template>
     </Module>

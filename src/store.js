@@ -11,6 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         currentUser: {
+            primaryKey: '',
             id: '',
             name: '',
             username: '',
@@ -122,8 +123,12 @@ export default new Vuex.Store({
         isAuthenticated: state => {
             return !!(state.currentUser.isAuthenticated && getAuthorizationToken())
         },
-        hasPermission: state => permission => {
-            const find = _.find(state.currentUser.permissions, { name: permission })
+        hasPermission: state => ({ key = null, name }) => {
+            if (key === state.currentUser.primaryKey || key === state.currentUser.id) {
+                return true
+            }
+
+            const find = _.find(state.currentUser.permissions, { name })
             if (find) return true
             return false
         },

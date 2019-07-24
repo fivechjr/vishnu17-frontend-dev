@@ -23,7 +23,7 @@
                         <strong class="font-medium">{{data ? data.length : '0'}}</strong> Statuses
                     </p>
                     <div
-                        v-if="$store.getters.hasPermission('people.statuses.create')"
+                        v-if="$store.getters.hasPermission({ key: $route.params.id, name: 'people.contact.update' })"
                         class="flex ml-8 flex-shrink-0"
                     >
                         <Button

@@ -34,7 +34,7 @@
                 :last-updated="data.updated_at"
                 @cancel="revert"
                 @save="update"
-                :edit-permission="$store.getters.hasPermission('people.health_profile.update')"
+                :edit-permission="$store.getters.hasPermission({ key: $route.params.id, name: 'people.contact.update' })"
             />
         </template>
     </Module>
