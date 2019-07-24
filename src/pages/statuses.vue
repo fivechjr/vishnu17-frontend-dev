@@ -89,7 +89,9 @@ export default {
                 this.pagination = {
                     current: all.data.current_page,
                     total: all.data.last_page,
-                    records: all.data.total
+                    records: this.filters.method
+                        ? all.data.length
+                        : all.data.total
                 };
             } catch (e) {
                 if (useAlert) {
