@@ -39,7 +39,8 @@ export default new Vuex.Store({
                 { name: 'ชั้นปีที่ 3', value: '3' },
                 { name: 'ชั้นปีที่ 4', value: '4' },
                 { name: 'นายช่าง', value: '9' }
-            ]
+            ],
+            genders: [{ name: 'ชาย', value: '1' }, { name: 'หญิง', value: '2' }]
         }
     },
     mutations: {
@@ -124,6 +125,8 @@ export default new Vuex.Store({
                     return state.options.sortingDirections
                 case 'years':
                     return state.options.years
+                case 'genders':
+                    return state.options.genders
             }
         }
     }

@@ -14,7 +14,7 @@
             </router-link>
             <span
                 class="text-sm text-gray-3 truncate"
-            >{{participantData.student_id}} &mdash; ภาค{{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
+            >{{participantData.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
             <div v-if="!isMarked" class="flex">
@@ -87,7 +87,10 @@ export default {
             }
         },
         academicProgram: function() {
-            return this.participantData.academic_program?.name;
+            if (this.participantData.academic_program) {
+                return "ภาค" + this.participantData.academic_program?.name;
+            }
+            return;
         },
         contact: function() {
             return {

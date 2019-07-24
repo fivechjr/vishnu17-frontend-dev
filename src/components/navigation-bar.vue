@@ -9,7 +9,7 @@
                     class="w-full flex flex-row items-center px-8 overflow-x-scroll"
                     style="height: 60px"
                 >
-                    <div class="w-full flex items-center" style="min-width: 500px">
+                    <div class="flex items-center" style="min-width: calc(556.48px + 2rem)">
                         <a
                             class="text-xs tracking-wide uppercase text-gray-4 mr-8 cursor-pointer"
                             @click="quickSearch"
@@ -25,10 +25,15 @@
                             tag="a"
                         >Lost & Found</router-link>
                         <router-link
-                            class="text-xs tracking-wide uppercase text-gray-4"
+                            class="text-xs tracking-wide uppercase text-gray-4 mr-8"
                             :to="{ name: 'Meal Options' }"
                             tag="a"
                         >Meal Options</router-link>
+                        <router-link
+                            class="text-xs tracking-wide uppercase text-gray-4"
+                            :to="{ name: 'Statuses' }"
+                            tag="a"
+                        >Statuses</router-link>
                     </div>
                 </div>
             </div>

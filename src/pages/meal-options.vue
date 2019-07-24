@@ -68,10 +68,7 @@ export default {
                 records: 0
             },
             sorting: {},
-            filters: {
-                date: "",
-                time: ""
-            },
+            filters: {},
             parameters: {
                 method: "",
                 extra: ""
@@ -108,7 +105,7 @@ export default {
             const params = {
                 sort: this.createSortingQuery(this.sorting),
                 page,
-                ...this.filter
+                ...this.filters
             };
             await this.fetchMeals(params);
         },
@@ -134,16 +131,16 @@ export default {
             const params = {
                 sort: this.createSortingQuery(this.sorting),
                 page: this.pagination.current,
-                ...this.filter
+                ...this.filters
             };
             await this.fetchMeals(params);
         },
         applyFiltering: async function(f) {
-            this.filter = f;
+            this.filters = f;
             const params = {
                 sort: this.createSortingQuery(this.sorting),
                 page: this.pagination.current,
-                ...this.filter
+                ...this.filters
             };
             await this.fetchMeals(params);
         },

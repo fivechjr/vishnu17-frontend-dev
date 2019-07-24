@@ -103,6 +103,14 @@ const router = new Router({
             meta: {
                 requiresAuthenticated: true
             }
+        },
+        {
+            path: '/statuses',
+            name: 'Statuses',
+            component: () => import('./pages/statuses.vue'),
+            meta: {
+                requiresAuthenticated: true
+            }
         }
     ]
 })

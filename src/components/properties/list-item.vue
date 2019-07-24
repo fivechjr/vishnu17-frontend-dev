@@ -26,7 +26,7 @@ export default {
     props: ["data"],
     computed: {
         latestStatus: function() {
-            if (this.data && this.data.actions.length > 0) {
+            if (this.data.actions && this.data.actions.length > 0) {
                 return this.data.actions[0]?.name;
             } else {
                 return "N/A";

@@ -1,6 +1,9 @@
 <template>
     <div class="flex flex-col text-sm">
-        <p v-if="label" class="text-xs text-gray-4 tracking-wide uppercase mb-2">{{label}}</p>
+        <p
+            v-if="label"
+            class="text-xs text-gray-4 tracking-wide uppercase mb-2 select-none cursor-default"
+        >{{label}}</p>
         <input
             :class="type !== 'file' ? 'w-full px-4 rounded border focus:border-black flex justify-center items-center appearance-none' : ''"
             :name="name"

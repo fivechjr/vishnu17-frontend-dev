@@ -1,6 +1,11 @@
 <template>
     <Layout>
-        <Aside v-show="showAside" @apply="applySorting" @close="showAside = false" />
+        <Aside
+            v-show="showAside"
+            @applySorting="applySorting"
+            @applyFiltering="applyFiltering"
+            @close="showAside = false"
+        />
         <div class="flex flex-row justify-end mb-12">
             <Button size="small" variant="secondary" @click.native="showAside = !showAside">Sorting</Button>
         </div>
@@ -63,7 +68,8 @@ export default {
                 year: "",
                 student_id: ""
             },
-            showAside: false
+            showAside: false,
+            filters: {}
         };
     },
     async created() {
@@ -75,6 +81,7 @@ export default {
     },
     methods: {
         fetchParticipants: async function(p = {}) {
+            console.log("params", p);
             const query = this.createQuery(p);
             const all = await participantService.getAll(query);
             const data = all.data.data;
@@ -87,7 +94,8 @@ export default {
         handlePageChange: async function(page) {
             const params = {
                 sort: this.createSortingQuery(this.sorting),
-                page
+                page,
+                ...this.filters
             };
             await this.fetchParticipants(params);
         },
@@ -112,7 +120,17 @@ export default {
             this.sorting = s;
             const params = {
                 sort: this.createSortingQuery(this.sorting),
-                page: this.pagination.current
+                page: this.pagination.current,
+                ...this.filters
+            };
+            await this.fetchParticipants(params);
+        },
+        applyFiltering: async function(f) {
+            this.filters = f;
+            const params = {
+                sort: this.createSortingQuery(this.sorting),
+                page: this.pagination.current,
+                ...this.filters
             };
             await this.fetchParticipants(params);
         }
