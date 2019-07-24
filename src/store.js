@@ -119,7 +119,6 @@ export default new Vuex.Store({
     getters: {
         hasPermission: state => permission => {
             const find = _.find(state.currentUser.permissions, { name: permission })
-            console.log(find)
             if (find) return true
             return false
         },
@@ -144,7 +143,7 @@ export default new Vuex.Store({
                     }))
                     return houses
                 case 'divisions':
-                    const divisions = state.options.divisions.map(({ name }) => ({
+                    const divisions = state.options.divisions.map(({ id, name }) => ({
                         name: name,
                         value: id
                     }))
