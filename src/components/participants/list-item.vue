@@ -17,18 +17,21 @@
             >{{participantData.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
-            <div v-if="isStatusDefined && !isMarked" class="flex">
-                <Button size="small" variant="secondary" @click.native="markPresent">Mark Present</Button>
+            <div v-if="isStatusDefined">
+                <div v-if="!isMarked" class="flex">
+                    <Button
+                        size="small"
+                        variant="secondary"
+                        @click.native="markPresent"
+                    >Mark Present</Button>
+                </div>
+                <span
+                    v-else
+                    class="text-xs uppercase tracking-wide"
+                    :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
+                >{{isPresent ? 'Present' : 'Absent'}}</span>
             </div>
-            <span
-                v-if="isStatusDefined"
-                class="text-xs uppercase tracking-wide"
-                :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
-            >{{isPresent ? 'Present' : 'Absent'}}</span>
-            <span
-                v-if="!isStatusDefined && !isMarked"
-                class="text-xs uppercase tracking-wide text-gray-4"
-            >NOT APPLICABLE</span>
+            <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span
