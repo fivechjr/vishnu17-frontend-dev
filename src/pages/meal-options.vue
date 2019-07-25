@@ -14,7 +14,12 @@
         <div class="flex flex-row mb-12" />
         <section v-if="meals && meals.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
-            <ListItem v-for="p in meals" :data="p" :key="p.id" />
+            <ListItem
+                v-for="(p, i) in meals"
+                :index="(i + 1 + (pagination.perPage * (pagination.current - 1)))"
+                :data="p"
+                :key="p.id"
+            />
         </section>
         <div v-if="meals && meals.length > 0" class="flex flex-row mb-12" />
         <div v-if="meals && meals.length > 0" class="w-full flex justify-end">
@@ -65,7 +70,8 @@ export default {
             pagination: {
                 current: 0,
                 total: 0,
-                records: 0
+                records: 0,
+                perPage: 0
             },
             sorting: {},
             filters: {},
@@ -93,7 +99,8 @@ export default {
                 this.pagination = {
                     current: all.data.current_page,
                     total: all.data.last_page,
-                    records: all.data.total
+                    records: all.data.total,
+                    perPage: all.data.per_page
                 };
             } catch (e) {
                 if (useAlert) {

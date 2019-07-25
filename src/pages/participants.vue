@@ -11,7 +11,12 @@
         </div>
         <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
-            <ListItem v-for="p in participants" :data="p" :key="p.id" />
+            <ListItem
+                v-for="(p, i) in participants"
+                :index="(i + 1 + (pagination.perPage * (pagination.current - 1)))"
+                :data="p"
+                :key="p.id"
+            />
         </section>
         <div v-if="participants && participants.length > 0" class="flex flex-row mb-12" />
         <div v-if="participants && participants.length > 0" class="w-full flex justify-end">
@@ -61,7 +66,8 @@ export default {
             participants: [],
             pagination: {
                 current: 0,
-                total: 0
+                total: 0,
+                perPage: 0
             },
             sorting: {
                 first_name: "",
@@ -87,7 +93,8 @@ export default {
             this.participants = data;
             this.pagination = {
                 current: all.data.current_page,
-                total: all.data.last_page
+                total: all.data.last_page,
+                perPage: all.data.per_page
             };
         },
         handlePageChange: async function(page) {

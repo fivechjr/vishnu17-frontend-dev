@@ -1,6 +1,9 @@
 <template>
     <div class="text-sm w-full flex flex-row items-baseline border-b" style="min-width: 768px">
-        <div class="w-2/6 flex flex-col px-4 py-3">
+        <div class="w-2/6 flex flex-row items-center px-4 py-3">
+            <div class="w-8 flex-shrink-0 flex mr-4">
+                <p class="text-sm text-gray-4">{{computedIndex}}</p>
+            </div>
             <router-link
                 target="_blank"
                 :to="{
@@ -23,7 +26,7 @@
 
 <script>
 export default {
-    props: ["data"],
+    props: ["data", "index"],
     computed: {
         latestStatus: function() {
             if (this.data.actions && this.data.actions.length > 0) {
@@ -31,6 +34,9 @@ export default {
             } else {
                 return "N/A";
             }
+        },
+        computedIndex: function() {
+            return this.index;
         }
     }
 };

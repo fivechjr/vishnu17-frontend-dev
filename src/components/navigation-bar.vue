@@ -10,7 +10,7 @@
                     class="w-full flex flex-row items-center px-8 overflow-x-auto"
                     style="height: 70px"
                 >
-                    <div class="flex items-center" style="min-width: calc(556.48px + 2rem)">
+                    <div class="flex items-center" style="min-width: calc(722.2px + 2rem)">
                         <a
                             class="text-xs tracking-wide uppercase text-gray-4 mr-8 cursor-pointer"
                             @click="quickSearch"
@@ -31,10 +31,15 @@
                             tag="a"
                         >Meal Options</router-link>
                         <router-link
-                            class="text-xs tracking-wide uppercase text-gray-4"
+                            class="text-xs tracking-wide uppercase text-gray-4 mr-8"
                             :to="{ name: 'Statuses' }"
                             tag="a"
                         >Statuses</router-link>
+                        <a
+                            class="text-sm tracking-wide uppercase text-gray-4"
+                            href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT3DN7ccZTO0e0jGn0O5LlMihwjI_8DzzSwyu7IvFJxWookSiBIJc-HmGDOUFnAwHuaF1JxPLIgTSOa/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+                            target="_blank"
+                        >ตารางการใช้วิทยุสื่อสาร</a>
                     </div>
                 </div>
             </div>

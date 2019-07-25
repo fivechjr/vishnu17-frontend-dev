@@ -73,7 +73,7 @@ export default {
             form: {
                 present: "",
                 reason: "",
-                unexpected: ""
+                unexpected: 0
             }
         };
     },

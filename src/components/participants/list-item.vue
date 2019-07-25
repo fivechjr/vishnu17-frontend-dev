@@ -1,20 +1,25 @@
 <template>
     <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
-        <div class="w-2/6 flex flex-col px-4 py-3">
-            <router-link
-                target="_blank"
-                :to="{
+        <div class="w-2/6 flex flex-row items-center px-4 py-3">
+            <div class="w-8 flex-shrink-0 flex mr-4">
+                <p class="text-sm text-gray-4">{{index}}</p>
+            </div>
+            <div class="flex flex-col">
+                <router-link
+                    target="_blank"
+                    :to="{
                 name: 'Profile',
                 params: { id: data.id }
             }"
-            >
+                >
+                    <span
+                        class="text-sm text-black truncate"
+                    >{{participantData.first_name}} {{participantData.last_name}}</span>
+                </router-link>
                 <span
-                    class="text-sm text-black truncate"
-                >{{participantData.first_name}} {{participantData.last_name}}</span>
-            </router-link>
-            <span
-                class="text-sm text-gray-3 truncate"
-            >{{participantData.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
+                    class="text-sm text-gray-3 truncate"
+                >{{participantData.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
+            </div>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
             <div v-if="isStatusDefined">
@@ -49,7 +54,7 @@
 import Button from "@/components/button";
 import * as participantService from "@/services/participant-service";
 export default {
-    props: ["data"],
+    props: ["data", "index"],
     components: {
         Button
     },
@@ -58,7 +63,9 @@ export default {
             participantData: this.data
         };
     },
-    mounted() {},
+    mounted() {
+        console.log(this.index);
+    },
     methods: {
         markPresent: async function() {
             let confirmation = confirm(

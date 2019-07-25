@@ -8,7 +8,12 @@
         <div class="flex flex-row mb-12" />
         <section v-if="statuses && statuses.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
-            <ListItem v-for="s in statuses" :data="s" :key="s.id" />
+            <ListItem
+                v-for="(s, i) in statuses"
+                :index="(i + 1 + (pagination.perPage * (pagination.current - 1)))"
+                :data="s"
+                :key="s.id"
+            />
         </section>
         <div v-if="statuses && statuses.length > 0" class="flex flex-row mb-12" />
         <div v-if="statuses && statuses.length > 0" class="w-full flex justify-end">
@@ -58,9 +63,10 @@ export default {
             showAside: false,
             statuses: [],
             pagination: {
-                current: 0,
+                current: 1,
                 total: 0,
-                records: 0
+                records: 0,
+                perPage: 0
             },
             filters: {
                 method: "",
@@ -87,10 +93,13 @@ export default {
                 const data = this.filters.method ? all.data : all.data.data;
                 this.statuses = data;
                 this.pagination = {
-                    current: all.data.current_page,
-                    total: all.data.last_page,
+                    current: this.filters.method ? all.data.current_page : 1,
+                    total: this.filters.method ? all.data.last_page : 1,
                     records: this.filters.method
                         ? all.data.length
+                        : all.data.total,
+                    perPage: this.filters.method
+                        ? all.data.per_page
                         : all.data.total
                 };
             } catch (e) {
