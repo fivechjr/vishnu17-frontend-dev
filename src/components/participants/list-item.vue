@@ -1,6 +1,6 @@
 <template>
     <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
-        <div class="w-2/6 flex flex-row items-center px-4 py-3">
+        <div class="w-2/5 flex flex-row items-center px-4 py-3">
             <div class="w-8 flex-shrink-0 flex mr-4">
                 <p class="text-sm text-gray-4">{{index}}</p>
             </div>
@@ -14,14 +14,14 @@
                 >
                     <span
                         class="text-sm text-black truncate"
-                    >{{participantData.first_name}} {{participantData.last_name}}</span>
+                    >{{participantData.first_name}} {{participantData.last_name}}{{nickname}}</span>
                 </router-link>
                 <span
                     class="text-sm text-gray-3 truncate"
-                >{{participantData.student_id}} &mdash; {{academicProgram}} ชั้นปีที่ {{participantData.year}}</span>
+                >{{participantData.student_id}} &mdash; {{academicProgram}} {{year}}</span>
             </div>
         </div>
-        <div class="w-2/6 flex flex-col px-4 py-3">
+        <div class="w-1/5 flex flex-col px-4 py-3">
             <div v-if="isStatusDefined">
                 <div v-if="!isMarked" class="flex">
                     <Button
@@ -38,13 +38,13 @@
             </div>
             <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
-        <div class="w-1/6 flex flex-col px-4 py-3">
+        <div class="w-1/5 flex flex-col px-4 py-3">
             <span
                 class="text-sm"
                 :class="gender === 'M' ? 'text-blue-2' : 'text-red-500'"
             >{{gender}}</span>
         </div>
-        <div class="w-1/6 flex flex-col px-4 py-3">
+        <div class="w-1/5 flex flex-col px-4 py-3">
             <div v-if="healthCondition" class="flex w-2 h-2 rounded-full bg-red-500"></div>
         </div>
     </div>
@@ -146,6 +146,21 @@ export default {
                 ].present;
             } else {
                 return false;
+            }
+        },
+        year: function() {
+            if (this.participantData.year) {
+                if (this.participantData.year == 9) return "นายช่าง";
+                else return `ชั้นปีที่ ${this.participantData.year}`;
+            } else {
+                return "N/A";
+            }
+        },
+        nickname: function() {
+            if (this.participantData.nickname) {
+                return ` (${this.participantData.nickname})`;
+            } else {
+                return "";
             }
         }
     }

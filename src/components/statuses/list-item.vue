@@ -18,7 +18,7 @@
                 </router-link>
                 <span
                     class="text-sm text-gray-3 truncate"
-                >{{data.person.student_id}} &mdash; ชั้นปีที่ {{data.person.year}}</span>
+                >{{data.person.student_id}} &mdash; {{year}}</span>
             </div>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
@@ -62,6 +62,14 @@ export default {
         },
         computedIndex: function() {
             return this.index;
+        },
+        year: function() {
+            if (this.data.person.year) {
+                if (this.data.person.year == 9) return "นายช่าง";
+                else return `ชั้นปีที่ ${this.data.person.year}`;
+            } else {
+                return "N/A";
+            }
         }
     }
 };
