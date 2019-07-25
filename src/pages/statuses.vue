@@ -100,7 +100,7 @@ export default {
                         : all.data.total,
                     perPage: this.filters.method
                         ? all.data.length
-                        : all.data.per_page
+                        : all.data.total
                 };
             } catch (e) {
                 if (useAlert) {
