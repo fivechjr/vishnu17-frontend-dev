@@ -93,13 +93,13 @@ export default {
                 const data = this.filters.method ? all.data : all.data.data;
                 this.statuses = data;
                 this.pagination = {
-                    current: this.filters.method ? all.data.current_page : 1,
-                    total: this.filters.method ? all.data.last_page : 1,
+                    current: all.data.current_page || 1,
+                    total: all.data.last_page || 1,
                     records: this.filters.method
                         ? all.data.length
                         : all.data.total,
                     perPage: this.filters.method
-                        ? all.data.per_page
+                        ? all.data.length
                         : all.data.total
                 };
             } catch (e) {
