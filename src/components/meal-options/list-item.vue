@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="w-2/6 flex flex-col px-4 py-3">
-            <span class="text-sm text-black">{{data.person.health_profile.food_allergy || 'N/A'}}</span>
+            <span class="text-sm text-black">{{note}}</span>
         </div>
         <div class="w-1/6 flex flex-col px-4 py-3">
             <span class="text-sm text-gray-3 truncate">{{when}}</span>
@@ -41,6 +41,17 @@ export default {
                 return dayjs(this.data.when).format("YYYY-MM-DD");
             } else {
                 return "N/A";
+            }
+        },
+        note: function() {
+            if (this.data.note) {
+                if (this.data.person.health_profile.food_allergy)
+                    return `${this.data.note} - ${this.data.person.health_profile.food_allergy}`;
+                else return this.data.note;
+            } else {
+                if (this.data.person.health_profile.food_allergy)
+                    return this.data.person.health_profile.food_allergy;
+                else return "N/A";
             }
         }
     }
