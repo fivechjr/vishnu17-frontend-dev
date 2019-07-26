@@ -62,7 +62,13 @@ export default {
             }
         },
         getLabel: function(m) {
-            return dayjs(m.when).format("DD/MM") + " · " + m.time.toUpperCase();
+            return (
+                dayjs(m.when).format("DD/MM") +
+                " · " +
+                m.amount +
+                " · " +
+                m.time.toUpperCase()
+            );
         }
     }
 };
