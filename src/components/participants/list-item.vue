@@ -37,12 +37,9 @@
                 >{{isPresent ? 'Present' : 'Absent'}}</span>-->
                 <span
                     v-else
-                    class="text-xs uppercase tracking-wide text-orange-500 cursor-pointer"
+                    class="text-xs uppercase tracking-wide text-teal-500 cursor-pointer"
                     @click="markAbsent"
-                >
-                    MARK
-                    <span class="font-medium">ABSENT</span>
-                </span>
+                >PRESENT</span>
             </div>
             <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
