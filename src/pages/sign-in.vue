@@ -1,22 +1,23 @@
 <template>
-    <main class="flex flex-col justify-center items-center mx-8 my-12">
-        <div class="section w-full flex flex-col">
-            <p class="text-3xl font-bold text-center">Vishnu 17</p>
-            <Spacer />
-            <InputField placeholder="Username" v-model="form.username" type="text" />
-            <Spacer />
-            <InputField placeholder="Password" v-model="form.password" type="password" />
-            <Spacer />
-            <Button type="submit" @click.native="go">Continue</Button>
-        </div>
-        <!-- <Spacer />
-        <p class="text-sm text-center text-blue-2">Don’t have an account?</p>-->
+    <main>
+        <section class="flex flex-col justify-center items-center mx-8 my-12">
+            <div class="section w-full flex flex-col">
+                <p class="text-3xl font-bold text-center">Vishnu 17</p>
+                <Spacer />
+                <InputField placeholder="Username" v-model="form.username" type="text" />
+                <Spacer />
+                <InputField placeholder="Password" v-model="form.password" type="password" />
+                <Spacer />
+                <Button type="submit" @click.native="go">Continue</Button>
+            </div>
+        </section>
     </main>
 </template>
 
 <style scoped>
-main {
-    min-height: calc(100vh - 6rem);
+section {
+    min-height: calc(100vh - 96px);
+    min-height: -webkit-calc(100vh - 96px);
 }
 
 .section {
