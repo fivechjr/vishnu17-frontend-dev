@@ -8,11 +8,13 @@
             </p>
             <Spacer />
             <div v-for="(s, group, index) in summary" :key="group">
-                <details>
+                <details class="border-t border-dashed pt-3">
                     <summary>
                         <span class="text-sm text-gray-4 cursor-pointer">
-                            <span class="font-medium text-black">{{s.group}}</span>
-                            - {{s.name}}
+                            <span
+                                class="inline-block font-medium text-black w-4"
+                            >{{s.group.charAt(0).toUpperCase()}}</span>
+                            {{s.name}}
                         </span>
                     </summary>
                     <div class="flex flex-col">
