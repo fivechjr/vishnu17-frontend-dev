@@ -37,8 +37,8 @@
                 >{{isPresent ? 'Present' : 'Absent'}}</span>-->
                 <span
                     v-else
-                    class="text-xs uppercase tracking-wide text-orange-500"
-                    @click.native="markAbsent"
+                    class="text-xs uppercase tracking-wide text-orange-500 cursor-pointer"
+                    @click="markAbsent"
                 >
                     MARK
                     <span class="font-medium">ABSENT</span>
