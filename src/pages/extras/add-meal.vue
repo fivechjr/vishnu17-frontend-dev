@@ -17,6 +17,8 @@
                                     :options="$store.getters.getOptions('meal-options')"
                                     v-model="form.time"
                                 />
+                                <Spacer />
+                                <InputField label="AMOUNT" type="number" v-model="form.amount" />
                             </div>
                         </template>
                         <template slot="footer">
@@ -70,7 +72,8 @@ export default {
             form: {
                 when: "",
                 note: "",
-                time: ""
+                time: "",
+                amount: "1"
             }
         };
     },

@@ -12,6 +12,13 @@
         </div>
         <p class="text-xs uppercase tracking-wide text-blue-2">{{pagination.records}} RECORDS</p>
         <div class="flex flex-row mb-12" />
+        <Summary
+            v-if="!parameters.method && meals.length > 0 && summary"
+            :date="filters.date"
+            :meal="filters.time"
+            :summary="summary"
+        />
+        <div v-if="!parameters.method && meals.length > 0 && summary" class="flex flex-row mb-12" />
         <section v-if="meals && meals.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
             <ListItem
@@ -53,6 +60,7 @@ import Button from "@/components/button";
 import * as mealService from "@/services/meal-service";
 import Paginate from "vuejs-paginate";
 import NotFound from "@/components/not-found";
+import Summary from "@/components/meal-options/summary";
 export default {
     components: {
         Layout,
@@ -62,7 +70,8 @@ export default {
         ListItem,
         Button,
         Paginate,
-        NotFound
+        NotFound,
+        Summary
     },
     data: function() {
         return {
@@ -79,7 +88,8 @@ export default {
                 method: "",
                 extra: ""
             },
-            showAside: false
+            showAside: false,
+            summary: null
         };
     },
     async created() {
@@ -94,13 +104,16 @@ export default {
                     query,
                     this.parameters.extra
                 );
-                const data = all.data.data;
-                this.meals = data;
+                const summary = this.parameters.method ? null : all[1].data;
+                const z = this.parameters.method ? all : all[0];
+                const meals = z.data.data;
+                this.meals = meals;
+                this.summary = summary;
                 this.pagination = {
-                    current: all.data.current_page,
-                    total: all.data.last_page,
-                    records: all.data.total,
-                    perPage: all.data.per_page
+                    current: z.data.current_page,
+                    total: z.data.last_page,
+                    records: z.data.total,
+                    perPage: z.data.per_page
                 };
             } catch (e) {
                 if (useAlert) {

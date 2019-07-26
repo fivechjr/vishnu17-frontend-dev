@@ -6,7 +6,7 @@
         <div class="w-2/6 px-4 py-3">
             <span class="text-xs text-gray-5 tracking-wide">RECIPIENT NAME</span>
         </div>
-        <div class="w-2/6 px-4 py-3">
+        <div class="w-1/6 px-4 py-3">
             <span class="text-xs text-gray-5 tracking-wide">NOTE</span>
         </div>
         <div class="w-1/6 px-4 py-3">
@@ -14,6 +14,9 @@
         </div>
         <div class="w-1/6 px-4 py-3">
             <span class="text-xs text-gray-5 tracking-wide">MEAL</span>
+        </div>
+        <div class="w-1/6 px-4 py-3">
+            <span class="text-xs text-gray-5 tracking-wide">QTY.</span>
         </div>
     </div>
 </template>

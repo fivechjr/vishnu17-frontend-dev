@@ -1,5 +1,5 @@
 <template>
-    <div class="text-sm w-full flex flex-row items-baseline border-b" style="min-width: 768px">
+    <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
         <div class="w-2/6 flex flex-row items-center px-4 py-3">
             <div class="w-8 flex-shrink-0 flex mr-4">
                 <p class="text-sm text-gray-4">{{computedIndex}}</p>

@@ -15,6 +15,7 @@
             <Spacer />
             <Select
                 label="FILTER · METHOD"
+                empty="รายการทั้งหมด"
                 :options="$store.getters.getOptions('meal-options:methods')"
                 v-model="method"
             />
@@ -82,6 +83,7 @@ aside {
 </style>
 
 <script>
+import dayjs from "dayjs";
 import Select from "@/components/select";
 import Spacer from "@/components/spacer";
 import Button from "@/components/button";
@@ -101,7 +103,7 @@ export default {
                 student_id: ""
             },
             filters: {
-                date: "",
+                date: dayjs().format("YYYY-MM-DD"),
                 time: ""
             },
             parameters: {
