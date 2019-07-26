@@ -23,7 +23,7 @@
         </div>
         <div class="w-2/5 flex flex-col px-4 py-3">
             <div v-if="isStatusDefined">
-                <div v-if="!isMarked && !isPresent" class="flex">
+                <div v-if="!isMarked" class="flex">
                     <Button
                         size="small"
                         variant="secondary"
@@ -35,11 +35,18 @@
                     class="text-xs uppercase tracking-wide"
                     :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
                 >{{isPresent ? 'Present' : 'Absent'}}</span>-->
-                <span
-                    v-else
-                    class="text-xs uppercase tracking-wide text-teal-500 cursor-pointer"
-                    @click="markAbsent"
-                >PRESENT</span>
+                <div class="flex" v-else>
+                    <span
+                        v-if="isPresent"
+                        class="text-xs uppercase tracking-wide text-teal-500 cursor-pointer"
+                        @click="markAbsent"
+                    >PRESENT</span>
+                    <span
+                        v-else
+                        class="text-xs uppercase tracking-wide text-orange-500 cursor-pointer"
+                        @click="markPresent"
+                    >ABSENT</span>
+                </div>
             </div>
             <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
