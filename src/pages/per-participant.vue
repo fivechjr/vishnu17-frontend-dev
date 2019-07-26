@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 import Layout from "@/components/layout";
 import BasicInformation from "@/components/per-participant/basic-information";
 import ContactInformation from "@/components/per-participant/contact-information";
@@ -78,7 +79,9 @@ export default {
                     house: data.baan?.name,
                     group: data.baan?.group,
                     highSchool: data.high_school,
-                    birthday: null,
+                    birthday: data.birthday
+                        ? dayjs(data.birthday).format("DD MMMM YYYY")
+                        : null,
                     stay: data.stay_overnight,
                     preferredRoute: data.preferred_route,
                     shirtSize: data.clothing_size,

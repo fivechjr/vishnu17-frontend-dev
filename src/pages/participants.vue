@@ -9,6 +9,8 @@
         <div class="flex flex-row justify-end mb-12">
             <Button size="small" variant="secondary" @click.native="showAside = !showAside">Sorting</Button>
         </div>
+        <p class="text-xs uppercase tracking-wide text-blue-2">{{pagination.records}} RECORDS</p>
+        <div class="flex flex-row mb-12" />
         <section v-if="participants && participants.length > 0" class="w-full overflow-x-scroll">
             <ListHeader />
             <ListItem
@@ -67,7 +69,8 @@ export default {
             pagination: {
                 current: 0,
                 total: 0,
-                perPage: 0
+                perPage: 0,
+                records: 0
             },
             sorting: {
                 first_name: "",
@@ -94,7 +97,8 @@ export default {
             this.pagination = {
                 current: all.data.current_page,
                 total: all.data.last_page,
-                perPage: all.data.per_page
+                perPage: all.data.per_page,
+                records: all.data.total
             };
         },
         handlePageChange: async function(page) {
