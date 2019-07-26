@@ -55,7 +55,7 @@ export default {
                 await propertyService.updateStatus(this.id, this.form);
                 alert("Updated.");
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 alert(e.response.data.message);
             } finally {
                 this.form = {

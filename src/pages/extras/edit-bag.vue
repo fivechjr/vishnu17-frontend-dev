@@ -115,7 +115,7 @@ export default {
             }
         },
         deleteBag: async function() {
-            console.log("deleee");
+            // console.log("deleee");
             try {
                 await participantService.deleteBag({
                     id: this.$route.params.id,

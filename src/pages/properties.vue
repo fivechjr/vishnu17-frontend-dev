@@ -69,7 +69,7 @@ export default {
         try {
             await this.fetchProperties();
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     },
     methods: {

@@ -85,7 +85,7 @@ export default {
         try {
             await this.fetchParticipants();
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     },
     methods: {

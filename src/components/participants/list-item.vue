@@ -67,7 +67,7 @@ export default {
         };
     },
     mounted() {
-        console.log(this.index);
+        // console.log(this.index);
     },
     methods: {
         markPresent: async function() {

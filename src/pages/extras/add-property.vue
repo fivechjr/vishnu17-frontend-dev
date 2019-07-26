@@ -72,7 +72,7 @@ export default {
                       )
                     : "";
             form.set("when", when);
-            console.log("when", when);
+            // console.log("when", when);
             try {
                 await propertyService.addProperty(form);
                 alert("Added.");
@@ -80,7 +80,7 @@ export default {
                 // Go reload;
                 window.location.reload(true);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 alert(e.response.data.message);
             }
         }

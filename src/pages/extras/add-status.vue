@@ -93,7 +93,7 @@ export default {
                     params: { id: this.$route.params.id }
                 });
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 alert(e.response.data.message);
             }
         }

@@ -81,7 +81,7 @@ export default {
                 const when = dayjs(
                     new Date(this.form.when).toISOString()
                 ).format("YYYY-MM-DD");
-                console.log(when);
+                // console.log(when);
                 await participantService.addMeal(this.$route.params.id, {
                     ...this.form,
                     when,
@@ -95,7 +95,7 @@ export default {
                     params: { id: this.$route.params.id }
                 });
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 alert(e.response.data.message);
             }
         }

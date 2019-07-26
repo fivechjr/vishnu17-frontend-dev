@@ -55,7 +55,7 @@ httpRequest.interceptors.response.use(
             const originalRequest = config
 
             if (status === 401) {
-                console.log('Seems to be 401')
+                // console.log('Seems to be 401')
                 if (!isAlreadyFetchingAccessToken) {
                     isAlreadyFetchingAccessToken = true
                     authService

@@ -57,9 +57,9 @@ export default {
                 // Statuses
                 this.statuses = [...data.actions];
 
-                console.log(this.statuses);
+                // console.log(this.statuses);
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 //
             }
         },

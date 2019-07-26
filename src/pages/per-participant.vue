@@ -104,7 +104,7 @@ export default {
                 // Meals
                 this.meals = [...data.meal_options];
             } catch (e) {
-                console.log(e);
+                // console.log(e);
                 //
             }
         },

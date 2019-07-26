@@ -78,7 +78,7 @@ export default {
         try {
             await this.fetchStatuses({}, false);
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     },
     methods: {
