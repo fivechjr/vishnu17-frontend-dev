@@ -29,7 +29,7 @@
                             class="px-8 py-6 flex flex-col text-sm rounded bg-orange-100 text-orange-500"
                         >
                             <span class="font-medium text-xs tracking-wide mb-2">FOOD ALLERGIES</span>
-                            <p class="text-sm">{{s.data.freshy.food_allergies.join(', ')}}</p>
+                            <p class="text-sm">{{s.data.freshy.food_allergies.join(' / ')}}</p>
                         </div>
                         <Spacer />
                         <p class="text-xs tracking-wide cursor-pointer">
@@ -44,7 +44,7 @@
                             class="px-8 py-6 flex flex-col text-sm rounded bg-orange-100 text-orange-500"
                         >
                             <span class="font-medium text-xs tracking-wide mb-2">FOOD ALLERGIES</span>
-                            <p class="text-sm">{{s.data.staff.food_allergies.join(', ')}}</p>
+                            <p class="text-sm">{{s.data.staff.food_allergies.join(' / ')}}</p>
                         </div>
                     </div>
                 </details>
