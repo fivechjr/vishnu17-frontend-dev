@@ -8,7 +8,10 @@
             </p>
             <Spacer />
             <div v-for="(s, group, index) in summary" :key="group">
-                <details class="border-t border-dashed pt-3">
+                <details
+                    class="border-t border-dashed pt-3"
+                    :class="{'pb-3': (index != Object.keys(summary).length - 1)}"
+                >
                     <summary>
                         <span class="text-sm text-gray-4 cursor-pointer">
                             <span
@@ -50,7 +53,6 @@
                         </div>
                     </div>
                 </details>
-                <Spacer v-if="(index != Object.keys(summary).length - 1)" />
             </div>
         </div>
     </div>
