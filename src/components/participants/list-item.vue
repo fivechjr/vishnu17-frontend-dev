@@ -1,10 +1,10 @@
 <template>
     <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
-        <div class="w-3/4 flex flex-row items-center px-4 py-3">
-            <div class="w-8 flex-shrink-0 flex mr-4">
+        <div class="w-3/4 flex flex-row items-center px-4 py-3 flex-grow-0 truncate">
+            <div class="w-8 flex mr-4 flex-shrink-0">
                 <p class="text-sm text-gray-4">{{index}}</p>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col truncate">
                 <router-link
                     target="_blank"
                     :to="{
