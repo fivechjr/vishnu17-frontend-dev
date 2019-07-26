@@ -146,7 +146,7 @@ export default {
             this.filters = f;
             const params = {
                 sort: this.createSortingQuery(this.sorting),
-                page: this.pagination.current,
+                page: 1,
                 ...this.filters
             };
             await this.fetchMeals(params);

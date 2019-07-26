@@ -1,6 +1,6 @@
 <template>
     <div class="text-sm w-full flex flex-row items-center border-b" style="min-width: 768px">
-        <div class="w-2/5 flex flex-row items-center px-4 py-3">
+        <div class="w-3/4 flex flex-row items-center px-4 py-3">
             <div class="w-8 flex-shrink-0 flex mr-4">
                 <p class="text-sm text-gray-4">{{index}}</p>
             </div>
@@ -21,7 +21,7 @@
                 >{{participantData.student_id}} &mdash; {{academicProgram}} {{year}}</span>
             </div>
         </div>
-        <div class="w-1/5 flex flex-col px-4 py-3">
+        <div class="w-2/5 flex flex-col px-4 py-3">
             <div v-if="isStatusDefined">
                 <div v-if="!isMarked" class="flex">
                     <Button
@@ -46,6 +46,9 @@
         </div>
         <div class="w-1/5 flex flex-col px-4 py-3">
             <div v-if="healthCondition" class="flex w-2 h-2 rounded-full bg-red-500"></div>
+        </div>
+        <div class="w-1/5 flex flex-col px-4 py-3">
+            <span class="text-sm text-gray-4">{{participantData.clothing_size}}</span>
         </div>
     </div>
 </template>

@@ -7,25 +7,44 @@
         <div class="px-6">
             <Select
                 label="FILTER · HOUSE"
+                empty="Disabled"
                 :options="$store.getters.getOptions('houses')"
                 v-model="filters.baan_id"
             />
             <Spacer />
             <Select
                 label="FILTER · GENDER"
+                empty="Disabled"
                 :options="$store.getters.getOptions('genders')"
                 v-model="filters.sex"
             />
             <Spacer />
             <Select
                 label="FILTER · YEAR"
+                empty="Disabled"
                 :options="$store.getters.getOptions('years')"
                 v-model="filters.year"
+            />
+            <Spacer />
+            <Select
+                label="FILTER · CLOTHING SIZE"
+                empty="Disabled"
+                :options="$store.getters.getOptions('clothing-sizes')"
+                v-model="filters.clothing_size"
+            />
+            <Spacer />
+            <Select
+                label="FILTER · PRESENT"
+                empty="Disabled"
+                :options="$store.getters.getOptions('statuses')"
+                v-model="filters.present"
             />
             <Spacer />
             <InputField label="FILTER · FIRST NAME" type="text" v-model="filters.first_name" />
             <Spacer />
             <InputField label="FILTER · LAST NAME" type="text" v-model="filters.last_name" />
+            <Spacer />
+            <InputField label="FILTER · NICKNAME" type="text" v-model="filters.nickname" />
             <Spacer />
             <div class="flex justify-end">
                 <Button size="small" @click.native="applyFiltering">Apply Filtering</Button>
@@ -99,7 +118,10 @@ export default {
                 sex: "",
                 year: "",
                 first_name: "",
-                last_name: ""
+                last_name: "",
+                nickname: "",
+                clothing_size: "",
+                present: ""
             }
         };
     },

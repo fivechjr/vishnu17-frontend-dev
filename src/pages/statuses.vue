@@ -128,7 +128,7 @@ export default {
         applyFiltering: async function(f) {
             this.filters = f;
             const params = {
-                page: this.pagination.current
+                page: 1
             };
             await this.fetchStatuses(params);
         }

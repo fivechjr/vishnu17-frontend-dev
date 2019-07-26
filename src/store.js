@@ -44,7 +44,8 @@ export default new Vuex.Store({
                 { name: 'นายช่าง', value: '9' }
             ],
             genders: [{ name: 'ชาย', value: '1' }, { name: 'หญิง', value: '2' }],
-            divisions: []
+            divisions: [],
+            clothingSizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
         }
     },
     mutations: {
@@ -166,6 +167,12 @@ export default new Vuex.Store({
                     return state.options.years
                 case 'genders':
                     return state.options.genders
+                case 'clothing-sizes':
+                    const sizes = state.options.clothingSizes.map(a => ({
+                        name: a,
+                        value: a
+                    }))
+                    return sizes
             }
         }
     }
