@@ -23,18 +23,26 @@
         </div>
         <div class="w-2/5 flex flex-col px-4 py-3">
             <div v-if="isStatusDefined">
-                <div v-if="!isMarked" class="flex">
+                <div v-if="!isMarked && !isPresent" class="flex">
                     <Button
                         size="small"
                         variant="secondary"
                         @click.native="markPresent"
                     >Mark Present</Button>
                 </div>
-                <span
+                <!-- <span
                     v-else
                     class="text-xs uppercase tracking-wide"
                     :class="isPresent ? 'text-teal-500' : 'text-gray-4'"
-                >{{isPresent ? 'Present' : 'Absent'}}</span>
+                >{{isPresent ? 'Present' : 'Absent'}}</span>-->
+                <span
+                    v-else
+                    class="text-xs uppercase tracking-wide text-orange-500"
+                    @click.native="markAbsent"
+                >
+                    MARK
+                    <span class="font-medium">ABSENT</span>
+                </span>
             </div>
             <span v-else class="text-xs uppercase tracking-wide text-gray-4">NOT APPLICABLE</span>
         </div>
@@ -78,6 +86,22 @@ export default {
                 try {
                     await participantService.addStatus(this.data.id, {
                         present: true
+                    });
+                    // alert("Marked.");
+                    await this.refresh();
+                } catch (e) {
+                    alert(e.response.data.message);
+                }
+            }
+        },
+        markAbsent: async function() {
+            let confirmation = confirm(
+                `Mark '${this.participantData.first_name} ${this.participantData.last_name}' as 'Absent'?`
+            );
+            if (confirmation) {
+                try {
+                    await participantService.addStatus(this.data.id, {
+                        present: false
                     });
                     // alert("Marked.");
                     await this.refresh();
