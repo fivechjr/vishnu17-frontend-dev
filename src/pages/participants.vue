@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import NProgress from "nprogress";
 import _ from "lodash";
 import Layout from "@/components/layout";
 import Aside from "@/components/participants/aside";
@@ -90,6 +91,7 @@ export default {
     },
     methods: {
         fetchParticipants: async function(p = {}) {
+            NProgress.start();
             const query = this.createQuery(p);
             const all = await participantService.getAll(query);
             const data = all.data.data;
@@ -100,6 +102,7 @@ export default {
                 perPage: all.data.per_page,
                 records: all.data.total
             };
+            NProgress.done();
         },
         handlePageChange: async function(page) {
             const params = {

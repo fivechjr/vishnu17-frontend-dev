@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import NProgress from "nprogress";
 import _ from "lodash";
 import Layout from "@/components/layout";
 import Aside from "@/components/statuses/aside";
@@ -83,6 +84,7 @@ export default {
     },
     methods: {
         fetchStatuses: async function(p = {}, useAlert = true) {
+            NProgress.start()
             const query = this.createQuery(p);
             try {
                 const all = await statusService.getAll(
@@ -107,6 +109,7 @@ export default {
                     alert(e.response.data.message);
                 }
             }
+            NProgress.done()
         },
         handlePageChange: async function(page) {
             const params = {

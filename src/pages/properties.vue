@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import NProgress from "nprogress";
 import _ from "lodash";
 import Layout from "@/components/layout";
 import Aside from "@/components/properties/aside";
@@ -74,6 +75,7 @@ export default {
     },
     methods: {
         fetchProperties: async function(p = {}) {
+            NProgress.start();
             const query = this.createQuery(p);
             const all = await propertyService.getAll(query);
             const data = all.data.data;
@@ -83,6 +85,7 @@ export default {
                 total: all.data.last_page,
                 perPage: all.data.per_page
             };
+            NProgress.done();
         },
         handlePageChange: async function(page) {
             const params = {
