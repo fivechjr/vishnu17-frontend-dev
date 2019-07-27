@@ -84,7 +84,7 @@ export default {
     },
     methods: {
         fetchStatuses: async function(p = {}, useAlert = true) {
-            NProgress.start()
+            NProgress.start();
             const query = this.createQuery(p);
             try {
                 const all = await statusService.getAll(
@@ -108,8 +108,9 @@ export default {
                 if (useAlert) {
                     alert(e.response.data.message);
                 }
+            } finally {
+                NProgress.done();
             }
-            NProgress.done()
         },
         handlePageChange: async function(page) {
             const params = {

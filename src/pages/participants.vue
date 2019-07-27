@@ -92,17 +92,22 @@ export default {
     methods: {
         fetchParticipants: async function(p = {}) {
             NProgress.start();
-            const query = this.createQuery(p);
-            const all = await participantService.getAll(query);
-            const data = all.data.data;
-            this.participants = data;
-            this.pagination = {
-                current: all.data.current_page,
-                total: all.data.last_page,
-                perPage: all.data.per_page,
-                records: all.data.total
-            };
-            NProgress.done();
+            try {
+                const query = this.createQuery(p);
+                const all = await participantService.getAll(query);
+                const data = all.data.data;
+                this.participants = data;
+                this.pagination = {
+                    current: all.data.current_page,
+                    total: all.data.last_page,
+                    perPage: all.data.per_page,
+                    records: all.data.total
+                };
+            } catch (e) {
+                //
+            } finally {
+                NProgress.done();
+            }
         },
         handlePageChange: async function(page) {
             const params = {

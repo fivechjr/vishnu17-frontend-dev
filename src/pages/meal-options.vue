@@ -121,8 +121,9 @@ export default {
                 if (useAlert) {
                     alert(e.response.data.message);
                 }
+            } finally {
+                NProgress.done();
             }
-            NProgress.done();
         },
         handlePageChange: async function(page) {
             const params = {
